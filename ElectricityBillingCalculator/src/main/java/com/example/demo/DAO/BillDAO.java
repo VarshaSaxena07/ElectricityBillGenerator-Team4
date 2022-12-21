@@ -8,11 +8,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.Entity.Bill;
+import com.example.demo.Entity.GenerateBillDTO;
 
 @Repository
-public interface BillDAO extends JpaRepository<Bill, Integer>{
+public interface BillDAO extends CrudRepository<Bill, Integer>{
 	
-	List<Bill> findAll();
+	@Query(value = "SELECT * FROM bills", nativeQuery = true)
+	List<Bill> findAllBills();
+	
 	
 	//Bill findByMonth(int month);
 	

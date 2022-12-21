@@ -5,6 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.MIN;
 import org.springframework.validation.annotation.Validated;
@@ -19,10 +23,11 @@ public class Bill {
 	@ManyToOne
 	private Consumer consumer;
 	
+	@NotEmpty(message = "Month may not be null")
 	private int month;
-	
+	@NotEmpty(message = "Year may not be null")
 	private int year;
-	
+	@NotEmpty(message = "Units consumed may not be null")
 	private int unitsConsumed;
 	
 	private int totalAmount;

@@ -32,7 +32,7 @@ public class BillServices {
 	}
 	
 	public List<Bill> getBills(){
-		return (List<Bill>) billDAO.findAll();
+		return (List<Bill>) billDAO.findAllBills();
 	}
 
 	public GenerateBillDTO generateBill(GenerateBillCO generateBillCO) {

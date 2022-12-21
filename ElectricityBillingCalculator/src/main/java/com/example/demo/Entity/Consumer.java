@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -13,13 +17,13 @@ import javax.persistence.Table;
 public class Consumer {
 	@Id
 	private int consumerId;
-	
+	@Pattern(regexp = "^[a-zA-Z0-9]{6,10}$")
 	private String password;
-	
+	@Size(min=3, message="Name should have atleast 3 characters")
 	private String consumerName;
-	
+	@NotEmpty
 	private String city;
-	
+	@NotEmpty
 	private String area;
 	
 	private ConsumerType type;
